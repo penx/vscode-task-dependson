@@ -1,0 +1,36 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "One",
+      "type": "shell",
+      "command": "echo start1",
+      "dependsOn": ["Two", "Three"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Two",
+      "type": "shell",
+      "isBackground": true,
+      "command": "echo start2 && echo end2 && read varname",
+      "problemMatcher": {
+        "owner": "custom",
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "start2",
+          "endsPattern": "end2"
+        }
+      }
+    },
+    {
+      "label": "Three",
+      "type": "shell",
+      "command": "echo start3"
+    }
+  ]
+}
